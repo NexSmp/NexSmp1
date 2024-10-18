@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranks - NEX SMP</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Ranks</h1>
+        </header>
+
+        <div class="search-container">
+            <select id="filter" class="filter-dropdown" onchange="filterRanks()">
+                <option value="low-to-high">Sort by: Low to High</option>
+                <option value="high-to-low">Sort by: High to Low</option>
+            </select>
+        </div>
+
+        <div class="ranks-list" id="ranksList">
+            <div class="rank-item" data-price="20">
+                <img src="wooden.png" alt="Minecraft Animal 1">
+                <h2>ELITE</h2>
+                <p>Price: 20 INR</p>
+                <a href="payment.html" class="buy-now-btn">Buy Now</a>
+            </div>
+            <div class="rank-item" data-price="40">
+                <img src="iron.png" alt="Minecraft Animal 2">
+                <h2>PRO</h2>
+                <p>Price: 40 INR</p>
+                <a href="payment.html" class="buy-now-btn">Buy Now</a>
+            </div>
+            <div class="rank-item" data-price="60">
+                <img src="Gold.png" alt="Minecraft Animal 3">
+                <h2>[HERO]</h2>
+                <p>Price: 60 INR</p>
+                <a href="payment.html" class="buy-now-btn">Buy Now</a>
+            </div>
+            <div class="rank-item" data-price="100">
+                <img src="minecraft_animal_X.jpg" alt="Minecraft Animal 4">
+                <h2>[VIP]</h2>
+                <p>Price: 100 INR</p>
+                <a href="payment.html" class="buy-now-btn">Buy Now</a>
+            </div>
+            <div class="rank-item" data-price="900">
+                <img src="Devil.png" alt="Minecraft Animal 5">
+                <h2>DEVIL</h2>
+                <p>Price: 900 INR</p>
+                <a href="payment.html" class="buy-now-btn">Buy Now</a>
+            </div>
+        </div>
+
+        <nav>
+            <a href="index.html" class="back-button">Go Back</a>
+        </nav>
+    </div>
+
+    <script>
+        function filterRanks() {
+            const filterValue = document.getElementById('filter').value;
+            const ranksList = document.getElementById('ranksList');
+            const ranks = Array.from(ranksList.children);
+
+            if (filterValue === 'low-to-high') {
+                ranks.sort((a, b) => a.dataset.price - b.dataset.price);
+            } else {
+                ranks.sort((a, b) => b.dataset.price - a.dataset.price);
+            }
+
+            ranksList.innerHTML = '';
+            ranks.forEach(rank => ranksList.appendChild(rank));
+        }
+    </script>
+</body>
+</html>
